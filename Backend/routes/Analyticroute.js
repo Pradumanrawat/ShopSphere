@@ -43,7 +43,7 @@ router.get('/', verifyToken, async (req, res) => {
     const totalRevenueAgg = await Order.aggregate([
       {
         $match: {
-          shopkeeperId: new mongoose.Types.ObjectId(shopkeeperId), // Use this ONLY IF shopkeeperId is a string
+          shopkeeperId: new mongoose.Types.ObjectId(shopkeeperId), // Only include orders that belong to this shopkeeperId
         },
       },
       {

@@ -84,8 +84,8 @@ router.post("/login", async (req, res) => {
     const user = await User.findOne({ email });
     if (!user) return res.status(404).json({ message: "User not found" });
 
-    console.log(`Login attempt for email: ${email}`);
-    console.log(`User role from DB: ${user.role}, Role from request: ${role}`);
+   // console.log(`Login attempt for email: ${email}`);
+   // console.log(`User role from DB: ${user.role}, Role from request: ${role}`);
 
     // 2. Check if user has the correct role
     if (user.role !== role) {

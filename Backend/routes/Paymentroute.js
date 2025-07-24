@@ -14,16 +14,16 @@ router.post('/', async (req, res) => {
   const { amount } = req.body;
 
   const options = {
-    amount: amount * 100, // ₹10 = 1000 paise
+    amount: amount * 100, // razpoy api get amount in paise or cent
     currency: 'INR',
     receipt: `order_rcptid_${Math.random().toString(36).substring(7)}`,
   };
 
   try {
     const order = await razorpay.orders.create(options);
-    res.json(order);
+    res.status(200).json(order);
   } catch (err) {
-    console.error(err);
+    console.log(err);
     res.status(500).send('Error creating Razorpay order');
   }
 });
