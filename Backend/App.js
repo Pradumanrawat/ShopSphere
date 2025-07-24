@@ -10,6 +10,7 @@ const adminroute=require('./routes/Adminroute');
 const paymentroute=require('./routes/Paymentroute')
 const paymentsuccess=require('./routes/Payment200')
 const app = express(); 
+require('dotenv').config()
 
 
 app.use(cors({
@@ -40,6 +41,6 @@ app.use('/paymentsuccess',paymentsuccess);
 //  Serve static images from 'uploads' folder
 app.use('/uploads', express.static('uploads'));
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000 , () => {
   console.log("Server is running on port 3000");
 });
