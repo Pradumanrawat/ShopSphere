@@ -82,7 +82,7 @@ const Homepage = () => {
       {/* Desktop Navigation */}
       <nav className="absolute top-4 right-6 z-20 hidden md:flex gap-4 text-sm font-[Lato]">
         <Link to="/" className="text-white hover:text-orange-500 px-4 py-2">Home</Link>
-        <Link to="/about" className="text-white hover:text-orange-500 px-4 py-2">About</Link>
+        
         <Link to="/contact" className="text-white hover:text-orange-500 px-4 py-2">Contact</Link>
         {isLoggedIn ? (
           <>
@@ -122,7 +122,7 @@ const Homepage = () => {
             </button>
             <nav className="flex flex-col gap-4 text-lg font-medium">
               <Link to="/" onClick={() => setMenuOpen(false)} className="py-2 hover:text-orange-700">Home</Link>
-              <Link to="/about" onClick={() => setMenuOpen(false)} className="py-2 hover:text-orange-700">About</Link>
+            
               <Link to="/contact" onClick={() => setMenuOpen(false)} className="py-2 hover:text-orange-700">Contact</Link>
               {isLoggedIn ? (
                 <>

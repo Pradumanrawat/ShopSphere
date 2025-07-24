@@ -1,8 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-// import { ToastContainer, toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
 
 const Home = ({ shopName  }) => {
   const [stats, setStats] = useState({
@@ -31,7 +29,7 @@ const data = res.data;
           products: data.totalproducts || 0,
           sales: data.totalRevenue || 0,
           
-          orders: data.totalOrdersFromCustomers||0 // Replace with actual data if needed
+          orders: data.totalOrdersFromCustomers||0 
         });
       } catch (error) {
         console.error("Error fetching shop stats:", error);

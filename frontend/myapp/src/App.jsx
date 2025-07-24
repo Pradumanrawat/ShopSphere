@@ -11,6 +11,10 @@ import ShopDetails from "./Pages/ShopDetails";
 import ShopDashboard from "./Pages/ShopkeeperDashboard"
 import ShopsAdminPanel from "./Pages/Dashboards/AdminDashboard";
 import ProtectedRoute from "./Components/ProtectedRoute"
+import Contact from "./Pages/Contact";
+import Needs from "./Pages/Dashboards/Needs";
+import Card from "./Pages/Card";
+import Footer from "./Pages/Footer";
 
 const App = () => {
   useEffect(() => {
@@ -25,10 +29,14 @@ const App = () => {
         <Route path="/" element={<>
   <Homepage />
   <HowItWorks />
+  <Needs/>
+  <Card/>
+  <Footer/>
 </>} />
 
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/contact" element={<Contact/>}/>
         
         <Route path="/shop/:shopName" element=
         {

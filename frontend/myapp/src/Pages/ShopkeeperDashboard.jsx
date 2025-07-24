@@ -113,7 +113,7 @@ const ShopkeeperDashboard = () => {
       setProducts(prevProducts => prevProducts.filter(p => p._id !== id));
   
     } catch (err) {
-      console.error("❌ Delete failed:", err);
+      console.error(" Delete failed:", err);
     }
   };
   
