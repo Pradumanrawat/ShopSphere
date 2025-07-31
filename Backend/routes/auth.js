@@ -74,10 +74,16 @@ router.post('/signup', async (req, res) => {
     }
   });
   
+
+
+
+
+
+
        
 // Login Route with role check
 router.post("/login", async (req, res) => {
-  const { email, password, role } = req.body; // role is expected from frontend
+  const { email, password, role,adminKey } = req.body; // role is expected from frontend
 
   try {
     // 1. Check if user exists
@@ -92,11 +98,19 @@ router.post("/login", async (req, res) => {
       return res.status(403).json({ message: `You are not authorized as a ${role}` });
     }
 
-    // 3. Compare password directly using bcrypt
+    if (role === "admin") {
+      if (!adminKey || adminKey !== process.env.ADMIN_SECRET_KEY) {
+        return res.status(401).json({ message: "Invalid admin key" });
+      }
+    } else {
+      // Normal password login for shopkeeper and customer
+         // 3. Compare password directly using bcrypt
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) return res.status(401).json({ message: "Invalid password" });
-
    
+    }
+
+
 
     // 4. Generate JWT
     const token = jwt.sign(

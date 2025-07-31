@@ -45,7 +45,7 @@ const App = () => {
         >
           <ShopDetails />
           </ProtectedRoute>
-        } />
+        } /> 
 
         {/* Protected Routes without separate Unauthorized page */}
         <Route

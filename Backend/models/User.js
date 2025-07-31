@@ -38,7 +38,7 @@ const userSchema = new mongoose.Schema({
     required: function () {
       return this.role === 'shopkeeper';
     },
-    unique:true
+    //unique:true
   },
   shopaddress: {
     type: String,

@@ -28,46 +28,51 @@ const Login = () => {
     setAdminKey("");
   };
 
+ 
+
+
   const handleLogin = async (e) => {
     e.preventDefault();
-
+  
     const loginData = {
       email,
       role: activeTab.toLowerCase(),
-      password: activeTab === "Admin" ? adminKey : password,
+      ...(activeTab === "Admin"
+        ? { adminKey }
+        : { password })
     };
-
+  
     try {
       const response = await axios.post('http://localhost:3000/login', loginData);
       const data = response.data;
-
+  
       if (response.status === 200) {
         localStorage.setItem("token", data.token);
         localStorage.setItem("role", data.user.role.toLowerCase());
         localStorage.setItem("fullName", data.user.fullName);
-        localStorage.setItem("userarea",data.user.area);
+        localStorage.setItem("userarea", data.user.area);
         if (data.user.role === "shopkeeper") {
           localStorage.setItem("shopName", data.user.shopName);
         }
-
+  
         toast.success(`${data.user.role} login successfully!`);
-
-        
-setTimeout(() => {
-  if (data.user.role === "admin") {
-    navigate("/admin");
-  } else if (data.user.role === "shopkeeper") {
-    navigate("/dashboard/home");
-  } else {
-    navigate("/shopsearch");
-  }
-}, 1500); // Delay to show toast
+  
+        setTimeout(() => {
+          if (data.user.role === "admin") {
+            navigate("/admin");
+          } else if (data.user.role === "shopkeeper") {
+            navigate("/dashboard/home");
+          } else {
+            navigate("/shopsearch");
+          }
+        }, 1500);
       }
     } catch (error) {
       console.error("Login error:", error);
       toast.error("An unexpected error occurred during login.");
     }
   };
+  
 
   return (
     <div className="bg-gray-100 flex items-center justify-center min-h-screen">
